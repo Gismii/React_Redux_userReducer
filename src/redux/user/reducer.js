@@ -6,19 +6,23 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
 
-    if( action.type === userActionTypes.LOGIN ){
+    // A melhor opção é o switch, entretanto, poderá usar o IF tamém se preferir
 
-        return { ...state, currentUser: action.payload };
+    switch (action.type) {
+        case userActionTypes.LOGIN:
 
+            return { ...state, currentUser: action.payload };
+
+        case userActionTypes.LOGOUT:
+
+            return { ...state, currentUser: null };
+
+
+        default:
+
+            return state;
     }
 
-    if( action.type === userActionTypes.LOGOUT ){
-
-        return { ...state, currentUser: null };
-
-    }
-
-    return state;
 };
 
 export default userReducer;
